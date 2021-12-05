@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>회원가입 페이지</title>
+</head>
+<body>
+{{>link}}
+<h1>회원가입 페이지</h1>
+<hr />
+<form action="/joinOK" method="post">
+    <input type="text" name="adminId" placeholder="Admin ID" /> <br>
+    <input type="password" name="adminPw" placeholder="Admin Password" /> <br>
+    <input type="text" name="adminName" placeholder="Admin Name" /> <br>
+    <input type="email" name="email" placeholder="Admin Email" /> <br>
+    <button>회원가입</button>
+</form>
+</body>
+</html>

@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <title>로그인</title>
+    <script src="https://code.jquery.com/jquery-3.4.1.js"></script>
+    <script type="text/javascript">
+        $(function(){
+            $("#login-button").click(function(){
+                login();
+            });
+
+            $("#regist-button").click(function(){
+                $(location).attr('href', '/join');
+            });
+        });
+
+        function login(){
+
+            if ($.trim($("#adminId").val()) === '') {
+                alert('아이디를 입력하세요.');
+                return false;
+            }
+
+            if ($.trim($("#adminPw").val()) === '') {
+                alert('비밀번호를 입력하세요.');
+                return false;
+            }
+
+            $.ajax({
+                url:"/login",
+                type :  "POST",
+                dataType : "json",
+                data : {
+                    memberId : $("#adminId").val(),
+                    memberPassword : $("#adminPw").val()
+                },
+                success : function(response){
+                    if(response.code == "200"){
+                        // 정상 처리 된 경우
+                        window.location = response.item.url;	//이전페이지로 돌아가기
+                    } else {
+                        alert(response.message);
+                    }
+                },
+                error : function(a,b,c){
+                    console.log('error~~~');
+                    console.log(a,b,c);
+                }
+            });
+
+        }
+    </script>
+</head>
+<body>
+{{>link}}
+<!--<input type="text" id="adminId" name="adminId" maxlength="8" placeholder="adminId" /> <br>-->
+<!--<input type="password" id="adminPw" name="adminPw" maxlength="8" placeholder="adminPw" /> <br>-->
+<!--<button id="login-button">로그인</button>-->
+<!--<button id="regist-button">관리자등록</button>-->
+
+
+<form action="/loginOK" method="post">
+<input type="text" id="adminId" name="adminId" placeholder="Username" /> <br>
+<input type="password" id="adminPw" name="adminPw" placeholder="Password" /> <br>
+<button>로그인</button>
+</form>
+<button id="regist-button">관리자등록</button>
+</body>
+</html>
