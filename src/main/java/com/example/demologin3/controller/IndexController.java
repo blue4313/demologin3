@@ -42,13 +42,21 @@ public class IndexController {
 
 //        model.addAttribute("username", username);
 
+        boolean isLogin = false;
+
         if (principalDetails != null) {
             System.out.println(principalDetails.getUsername());
             System.out.println(principalDetails.getAdminName());
             System.out.println(principalDetails.getAdminEmail());
+
+            isLogin = true;
+
+        } else {
+
         }
 
         modelAndView.addObject("username", "22222");
+        modelAndView.addObject("isLogin", isLogin);
         modelAndView.setViewName("index");
         return modelAndView;
     }
