@@ -5,6 +5,7 @@ import org.springframework.security.web.savedrequest.RequestCache;
 import org.springframework.security.web.savedrequest.SavedRequest;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -13,7 +14,8 @@ import javax.servlet.http.HttpServletResponse;
 public class LoginController {
 
     @GetMapping("/login")
-    public String Login(HttpServletRequest request, HttpServletResponse response) {
+//    public String Login(@RequestParam HttpServletRequest request, HttpServletResponse response) {
+    public String Login() {
         /*RequestCache requestCache = new HttpSessionRequestCache();
         SavedRequest savedRequest = requestCache.getRequest(request, response);
 

@@ -38,12 +38,15 @@
                     memberPassword : $("#adminPw").val()
                 },
                 success : function(response){
-                    if(response.code == "200"){
+
+                    console.log(response);
+
+                    /!*if(response.code == "200"){
                         // 정상 처리 된 경우
                         window.location = response.item.url;	//이전페이지로 돌아가기
                     } else {
                         alert(response.message);
-                    }
+                    }*!/
                 },
                 error : function(a,b,c){
                     console.log('error~~~');
@@ -68,5 +71,6 @@
 <button type="button" id="login-button">로그인</button>
 </form>
 <button type="button" id="regist-button">관리자등록</button>
+
 </body>
 </html>

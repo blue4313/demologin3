@@ -23,13 +23,13 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
     private PrincipalDetailsService principalDetailsService;
 
     /*@Autowired
-    private CustomUserDetailsService customUserDetailsService;
+    private CustomUserDetailsService customUserDetailsService;*/
 
     @Autowired
     private CustomAuthenticationSuccessHandler customAuthenticationSuccessHandler;
 
     @Autowired
-    private CustomAuthenticationFailureHandler customAuthenticationFailureHandler;*/
+    private CustomAuthenticationFailureHandler customAuthenticationFailureHandler;
 
     @Override
     protected void configure(HttpSecurity http) throws Exception {
