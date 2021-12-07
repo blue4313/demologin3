@@ -30,7 +30,14 @@ public class CustomAuthenticationSuccessHandler extends SimpleUrlAuthenticationS
     public void onAuthenticationSuccess(HttpServletRequest request, HttpServletResponse response,
                                         Authentication authentication) throws ServletException, IOException {
 
-        ObjectMapper mapper = new ObjectMapper();	//JSON 변경용
+        System.out.println("로그인 성공 ㅎㅎㅎㅎ");
+
+        response.setCharacterEncoding("UTF-8");
+        response.setStatus(HttpServletResponse.SC_OK);
+        response.getWriter().print("<script>alert('로그인 성공 ㅎㅎㅎㅎ');location.href='/';</script>");
+        response.getWriter().flush();
+
+        /*ObjectMapper mapper = new ObjectMapper();	//JSON 변경용
 
         ResponseDataDTO responseDataDTO = new ResponseDataDTO();
         responseDataDTO.setCode(ResponseDataCode.SUCCESS);
@@ -45,6 +52,6 @@ public class CustomAuthenticationSuccessHandler extends SimpleUrlAuthenticationS
         response.setCharacterEncoding("UTF-8");
         response.setStatus(HttpServletResponse.SC_OK);
         response.getWriter().print(mapper.writeValueAsString(responseDataDTO));
-        response.getWriter().flush();
+        response.getWriter().flush();*/
     }
 }

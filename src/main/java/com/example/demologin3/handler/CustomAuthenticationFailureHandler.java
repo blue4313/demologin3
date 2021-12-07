@@ -12,6 +12,7 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
+import java.io.PrintWriter;
 
 /**
  * 로그인 실패시 로직
@@ -24,7 +25,25 @@ public class CustomAuthenticationFailureHandler extends SimpleUrlAuthenticationF
     public void onAuthenticationFailure(HttpServletRequest request, HttpServletResponse response,
                                         AuthenticationException exception) throws IOException, ServletException {
 
-        ObjectMapper mapper = new ObjectMapper();	//JSON 변경용
+        System.out.println("로그인 실패ㅠㅠㅠㅠ");
+
+        response.setContentType("text/html; charset=UTF-8");
+
+        PrintWriter printWriter = response.getWriter();
+
+        printWriter.println("<script>alert('로그인 실패'); location.href='/login';</script>");
+
+        printWriter.flush();
+
+
+        /*response.setCharacterEncoding("UTF-8");
+        response.setStatus(HttpServletResponse.SC_OK);
+
+        response.getWriter().
+        response.getWriter().print("<script>alert('로그인 실패ㅠㅠㅠㅠ');location.href='/login';</script>");
+        response.getWriter().flush();*/
+
+        /*ObjectMapper mapper = new ObjectMapper();	//JSON 변경용
 
         ResponseDataDTO responseDataDTO = new ResponseDataDTO();
         responseDataDTO.setCode(ResponseDataCode.ERROR);
@@ -35,7 +54,7 @@ public class CustomAuthenticationFailureHandler extends SimpleUrlAuthenticationF
         response.setCharacterEncoding("UTF-8");
         response.setStatus(HttpServletResponse.SC_OK);
         response.getWriter().print(mapper.writeValueAsString(responseDataDTO));
-        response.getWriter().flush();
+        response.getWriter().flush();*/
 
     }
 }
